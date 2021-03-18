@@ -29,3 +29,14 @@ Based on the requirements of our data consumers, our pipeline is required to adh
 * Retries happen every 5 minutes.
 * Catchup is turned off.
 * Do not email on retry. 
+
+
+**Pipeline Implementation**:
+
+**Apache Airflow** is a Python framework for programmatically creating workflows in DAGs.
+For e.g. ETL processes, generating reports, and retraining models on a daily basis. 
+The Airflow UI automatically parses our DAG and creates a natural representation for the movement and transformation of data. A DAG simply is a collection of all the tasks you want to run, organized in a way that reflects their relationships and dependencies. 
+A **DAG** describes *how* you want to carry out your workflow, and **Operators** determine *what* actually gets done. 
+
+By default, airflow comes with some simple built-in operators like `PythonOperator`, `BashOperator`, `DummyOperator` etc., however, airflow lets you extend the features of a `BaseOperator` and create custom operators. For this project, I developed several custom operators.
+![operators](images/operators.png)
