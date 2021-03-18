@@ -22,3 +22,4 @@ At a high-level the pipeline does the following tasks.
 
 ![dag](images/dag.png)
 > Structure of the Airflow DAG
+
