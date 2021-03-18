@@ -22,3 +22,10 @@ At a high-level the pipeline does the following tasks.
 ![dag](images/dag.png)
 > Structure of the Airflow DAG
 
+**Design Goals**:
+Based on the requirements of our data consumers, our pipeline is required to adhere to the following guidelines:
+* The DAG should not have any dependencies on past runs.
+* On failure, the task is retried for 3 times.
+* Retries happen every 5 minutes.
+* Catchup is turned off.
+* Do not email on retry. 
