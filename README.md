@@ -19,7 +19,6 @@ At a high-level the pipeline does the following tasks.
 4. Perform data validation and data quality checks.
 5. Calculate the most played songs for the specified time interval.
 
-
 ![dag](images/dag.png)
 > Structure of the Airflow DAG
 
