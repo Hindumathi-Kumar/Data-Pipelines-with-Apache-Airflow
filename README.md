@@ -39,6 +39,7 @@ The Airflow UI automatically parses our DAG and creates a natural representation
 A **DAG** describes *how* you want to carry out your workflow, and **Operators** determine *what* actually gets done. 
 
 By default, airflow comes with some simple built-in operators like `PythonOperator`, `BashOperator`, `DummyOperator` etc., however, airflow lets you extend the features of a `BaseOperator` and create custom operators. For this project, I developed several custom operators.
+
 ![operators](images/operators.png)
 
 The description of each of these operators follows:
