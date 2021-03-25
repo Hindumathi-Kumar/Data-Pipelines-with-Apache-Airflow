@@ -13,13 +13,6 @@ At a high-level the pipeline does the following tasks.
 5. Calculate the most played songs for the specified time interval.
 6. Load the result back into S3.
 
-![dag](images/dag.png)
-> Structure of the Airflow DAG
-
-
-
-
-
 
 **Design Goals**:
 Based on the requirements of our data consumers, our pipeline is required to adhere to the following guidelines:
@@ -34,8 +27,6 @@ Based on the requirements of our data consumers, our pipeline is required to adh
 Apache Airflow is a Python framework for programmatically creating workflows in DAGs, e.g. ETL processes, generating reports, and retraining models on a daily basis. The Airflow UI automatically parses our DAG and creates a natural representation for the movement and transformation of data. A DAG simply is a collection of all the tasks you want to run, organized in a way that reflects their relationships and dependencies. A **DAG** describes *how* you want to carry out your workflow, and **Operators** determine *what* actually gets done. 
 
 By default, airflow comes with some simple built-in operators like `PythonOperator`, `BashOperator`, `DummyOperator` etc., however, airflow lets you extend the features of a `BaseOperator` and create custom operators. For this project, I developed several custom operators. 
-
-![operators](images/operators.png)
 
 The description of each of these operators follows:
 - **StageToRedshiftOperator**: Stages data to a specific redshift cluster from a specified S3 location. Operator uses templated fields to handle partitioned S3 locations.
@@ -105,7 +96,6 @@ Run `docker-compose up` from the directory containing `docker-compose.yml`. Ensu
 
 > **NOTE: You can find details of how to manage Apache Airflow on mac here:** https://gist.github.com/shravan-kuchkula/a3f357ff34cf5e3b862f3132fb599cf3
 
-![start_airflow](images/start_airflow.png)
 
 ***Step 3: Configure Apache Airflow Hooks***
 
@@ -113,7 +103,6 @@ On the left is the `S3 connection`. The Login and password are the IAM user's ac
 
 On the right is the `redshift connection`. These values can be easily gathered from your Redshift cluster
 
-![connections](images/connections.png)
 
 ***Step 4: Execute the create-tables-dag***
 
@@ -123,4 +112,4 @@ This dag will create the staging, fact and dimension tables. The reason we need 
 
 As the execution start date is `2018-11-1` with a schedule interval `@daily` and the execution end date is `2018-11-30`, Airflow will automatically trigger and schedule the dag runs once per day for 30 times. Shown below are the 30 DAG runs ranging from start_date till end_date, that are trigged by airflow once per day. 
 
-![schedule](images/schedule.png)
+
